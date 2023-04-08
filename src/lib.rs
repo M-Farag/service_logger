@@ -29,7 +29,11 @@ pub fn get_an_appending_file_handler(file_path: &str) -> Result<fs::File, Box<dy
     Ok(file)
 }
 
-pub fn write_to_file(file: &mut fs::File, message: &str) -> Result<(), Box<dyn Error>> {
-    file.write(message.as_bytes())?;
+pub fn write_to_file(file: &mut fs::File, message: &str,new_line:bool) -> Result<(), Box<dyn Error>> {
+    if new_line {
+        writeln!(file, "{}", message)?;
+    } else {
+        write!(file, "{}", message)?;
+    }
     Ok(())
 }

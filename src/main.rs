@@ -18,7 +18,7 @@ fn main() {
     );
 
 
-    if let Err(err) =  service_logger::write_to_file(&mut log_file, &args.message) {
+    if let Err(err) =  service_logger::write_to_file(&mut log_file, &args.message, true) {
         eprintln!("Err: {}", err);
         std::process::exit(1);
     }
